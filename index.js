@@ -12,8 +12,8 @@ function invert(people){
     // todos os nomes digitados, porém de maneira invertida (do último para o primeiro).
     // Uma dica, você pode utilizar a função prompt para permitir que o usuário digite os
     // nomes dos usuários.
-
-    return [];
+    people.reverse();
+    return people;
 }
 
 /**
@@ -29,7 +29,12 @@ function mean(grades){
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
 
-    return 0;
+    let notas = 0;
+    for(let i = 0; i < (grades.length); i++){
+        notas += grades[i];
+    }
+    media = notas / (grades.length);
+    return media;
 }
 
 /**
@@ -44,8 +49,16 @@ function isApproved(mean){
     // 2.1) Faça um programa que leia o nome e as três notas de uma disciplina de um aluno e ao final escreva
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
+    let nota;
+    
 
-    return "";
+    if(mean >= 7){
+        nota = "aprovado";
+    } else {
+        nota = "reprovado";
+    }
+
+    return nota;
 }
 
 /**
@@ -61,8 +74,30 @@ function wide(strDate){
     // por exemplo, de "03/03/2022" para "03 de março de 2022". Dica: use a função
     // “split” de uma string que quebra a string em pedaços dado um separador como argumento da função.
     // Nesse caso, o separador é a barra (/) da data.
+    if (strDate == ""){
+       return "";
+    }
+    let meses_ano = ["janeiro", "fevereiro","março","abril","maio", "junho", "julho", "agosto","setembro", "outubro", "novembro", "dezembro"];
+    let data = strDate.split("/");
+    let dia = data[0];
+    let num_mes = data[1];
+    let ano = data[2];
+    let mes;
+    let data_completa;
 
-    return "";
+    if(!strDate.includes("/")){
+        return "";
+    }
+    num_mes = parseInt(num_mes);
+
+ 
+   if (num_mes >= 1 && num_mes <= 12) {
+        mes = meses_ano[num_mes - 1];
+        data_completa = dia + " de " + mes + " de " + ano;
+        return data_completa;
+   }else {
+        return "";
+   } 
 }
 
 // Trecho utilizado pelos testes
